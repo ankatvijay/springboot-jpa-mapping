@@ -26,6 +26,12 @@ public class OneToOneUnidirectionalMapping {
     public ApplicationRunner init() {
         return args -> {
 
+            Customer customer = new Customer();
+            customer.setFirstname("Vijay");
+            customer.setLastname("Ankat");
+            customer.setEmail("test@gmail.com");
+            customer.setPhone("9876543210");
+
             ShippingAddress shippingAddress = new ShippingAddress();
             shippingAddress.setStreet("Renolds Colony");
             shippingAddress.setCity("Mumbai");
@@ -33,16 +39,10 @@ public class OneToOneUnidirectionalMapping {
             shippingAddress.setZip("400037");
             shippingAddress.setCountry("India");
 
-            Customer customer = new Customer();
-            customer.setFirstname("Vijay");
-            customer.setLastname("Ankat");
-            customer.setEmail("test@gmail.com");
-            customer.setPhone("9876543210");
+            shippingAddress.setCustomer(customer);
 
-            customer.setShippingAddress(shippingAddress);
-
-            Customer savedCustomer = customerService.insertCustomer(customer);
-            log.info(String.valueOf(savedCustomer));
+            ShippingAddress savedShippingAddress = shippingAddressService.insertShippingAddress(shippingAddress);
+            log.info(String.valueOf(savedShippingAddress));
         };
     }
 }

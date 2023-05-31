@@ -15,14 +15,23 @@ public class ShippingAddress implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @Column(name = "street")
     private String street;
+
+    @Column(name = "city")
     private String city;
+
+    @Column(name = "province")
     private String province;
+
+    @Column(name = "zip")
     private String zip;
+
+    @Column(name = "country")
     private String country;
 
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "shippingAddress")
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
     private Customer customer;
 }

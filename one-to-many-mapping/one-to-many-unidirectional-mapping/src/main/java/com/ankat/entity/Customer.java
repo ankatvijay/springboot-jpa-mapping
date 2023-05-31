@@ -1,9 +1,13 @@
 package com.ankat.entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -28,8 +32,7 @@ public class Customer implements Serializable {
     @Column(name = "phone")
     private String phone;
 
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "customer")
-    private ShippingAddress shippingAddress;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Set<ShippingAddress> shippingAddress;
 }

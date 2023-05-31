@@ -27,8 +27,4 @@ public class Customer implements Serializable {
 
     @Column(name = "phone")
     private String phone;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "shipping_address_id", referencedColumnName = "id")
-    private ShippingAddress shippingAddress;
 }

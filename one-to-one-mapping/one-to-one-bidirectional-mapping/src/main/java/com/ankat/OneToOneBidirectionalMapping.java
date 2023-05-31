@@ -26,45 +26,24 @@ public class OneToOneBidirectionalMapping {
     @Bean
     public ApplicationRunner init() {
         return args -> {
-            /*
-            ShippingAddress shippingAddress1 = ShippingAddress.builder()
-                    .street("Renolds Colony 1")
-                    .city("Mumbai 1")
-                    .province("Wadala 1")
-                    .zip("400037")
-                    .country("India")
-                    .build();
+            Customer customer = new Customer();
+            customer.setFirstname("Vijay");
+            customer.setLastname("Ankat");
+            customer.setEmail("test@gmail.com");
+            customer.setPhone("9876543210");
 
-            Customer customer1 = Customer.builder()
-                    .firstname("Vijay")
-                    .lastname("Ankat")
-                    .email("test@gmail.com")
-                    .phone("9876543210")
-                    .shippingAddress(shippingAddress1)
-                    .build();
-            */
-            //Customer savedCustomer = customerService.insertCustomer(customer1);
-            //log.info(String.valueOf(savedCustomer));
+            ShippingAddress shippingAddress = new ShippingAddress();
+            shippingAddress.setProvince("Renolds Colony");
+            shippingAddress.setCity("Mumbai");
+            shippingAddress.setStreet("Wadala");
+            shippingAddress.setZip("400037");
+            shippingAddress.setCountry("India");
 
-            Customer customer2 = new Customer();
-            customer2.setFirstname("Sushma");
-            customer2.setLastname("Ankat");
-            customer2.setEmail("test@gmail.com");
-            customer2.setPhone("9876543210");
+            customer.setShippingAddress(shippingAddress);
+            shippingAddress.setCustomer(customer);
 
-
-            ShippingAddress shippingAddress2 = new ShippingAddress();
-            shippingAddress2.setProvince("Renolds Colony 2");
-            shippingAddress2.setCity("Mumbai 2");
-            shippingAddress2.setStreet("Wadala 2");
-            shippingAddress2.setZip("400037");
-            shippingAddress2.setCountry("India");
-
-            customer2.setShippingAddress(shippingAddress2);
-            shippingAddress2.setCustomer(customer2);
-
-            ShippingAddress savedShippingAddress = shippingAddressService.insertShippingAddress(shippingAddress2);
-            log.info(String.valueOf(savedShippingAddress));
+            Customer savedCustomer = customerService.insertCustomer(customer);
+            log.info(String.valueOf(savedCustomer));
         };
     }
 }
