@@ -28,8 +28,6 @@ public class Customer implements Serializable {
     @Column(name = "phone")
     private String phone;
 
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "customer")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "customer")
     private ShippingAddress shippingAddress;
 }

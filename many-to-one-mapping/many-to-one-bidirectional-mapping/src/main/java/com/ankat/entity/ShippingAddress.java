@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -33,7 +34,6 @@ public class ShippingAddress implements Serializable {
     @Column(name = "country")
     private String country;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shippingAddress")
+    private Set<Customer> customers;
 }

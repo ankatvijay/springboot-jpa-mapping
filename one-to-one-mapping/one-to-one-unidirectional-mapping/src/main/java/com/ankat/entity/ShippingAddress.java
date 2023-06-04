@@ -32,6 +32,6 @@ public class ShippingAddress implements Serializable {
     private String country;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
     private Customer customer;
 }

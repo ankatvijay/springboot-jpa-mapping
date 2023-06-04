@@ -31,7 +31,7 @@ public class ShippingAddress implements Serializable {
     @Column(name = "country")
     private String country;
 
-    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
     private Customer customer;
 }

@@ -6,8 +6,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -32,7 +30,7 @@ public class Customer implements Serializable {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
-    private Set<ShippingAddress> shippingAddress;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shipping_address_id", referencedColumnName = "id", nullable = false)
+    private ShippingAddress shippingAddress;
 }

@@ -18,6 +18,7 @@ public class OneToOneUnidirectionalMapping {
 
     private final CustomerService customerService;
     private final ShippingAddressService shippingAddressService;
+
     public static void main(String[] args) {
         SpringApplication.run(OneToOneUnidirectionalMapping.class, args);
     }
@@ -25,24 +26,24 @@ public class OneToOneUnidirectionalMapping {
     @Bean
     public ApplicationRunner init() {
         return args -> {
-
+            // Payload ShippingAddress to Customer
             Customer customer = new Customer();
-            customer.setFirstname("Vijay");
-            customer.setLastname("Ankat");
+            customer.setFirstname("Tom");
+            customer.setLastname("Hendry");
             customer.setEmail("test@gmail.com");
             customer.setPhone("9876543210");
 
             ShippingAddress shippingAddress = new ShippingAddress();
-            shippingAddress.setStreet("Renolds Colony");
-            shippingAddress.setCity("Mumbai");
-            shippingAddress.setProvince("Wadala");
-            shippingAddress.setZip("400037");
-            shippingAddress.setCountry("India");
+            shippingAddress.setProvince("Washington Province");
+            shippingAddress.setCity("Washington");
+            shippingAddress.setStreet("Washington Street");
+            shippingAddress.setZip("115475");
+            shippingAddress.setCountry("US");
 
             shippingAddress.setCustomer(customer);
 
             ShippingAddress savedShippingAddress = shippingAddressService.insertShippingAddress(shippingAddress);
-            log.info(String.valueOf(savedShippingAddress));
+            log.info("Shipping Address Saved : " + savedShippingAddress);
         };
     }
 }

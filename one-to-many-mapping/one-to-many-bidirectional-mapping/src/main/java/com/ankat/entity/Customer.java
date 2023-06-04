@@ -31,9 +31,6 @@ public class Customer implements Serializable {
     @Column(name = "phone")
     private String phone;
 
-    //@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    //@JoinColumn(name = "shipping_address_id")
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", orphanRemoval = true)
-    private Set<ShippingAddress> shippingAddresses;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+    private Set<ShippingAddress> shippingAddress;
 }

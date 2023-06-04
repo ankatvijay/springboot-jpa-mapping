@@ -1,6 +1,9 @@
+server:
+  port: 0
+
 spring:
   datasource:
-    url: jdbc:mysql://58.146.107.56:3306/many-to-many-unidirectional-db?createDatabaseIfNotExist=true&useSSL=false
+    url: jdbc:mysql://192.168.0.111:3306/many-to-many-unidirectional-db?createDatabaseIfNotExist=true&useSSL=false
     username: ankat
     password: $m@r7C@rd
 
@@ -9,8 +12,9 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: 'create-drop'
-
+      ddl-auto: update
+      show-sql: true
+      generate-ddl: true
 
 logging:
   level:

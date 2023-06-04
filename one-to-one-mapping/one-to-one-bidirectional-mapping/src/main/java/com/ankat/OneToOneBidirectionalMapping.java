@@ -26,24 +26,45 @@ public class OneToOneBidirectionalMapping {
     @Bean
     public ApplicationRunner init() {
         return args -> {
-            Customer customer = new Customer();
-            customer.setFirstname("Vijay");
-            customer.setLastname("Ankat");
-            customer.setEmail("test@gmail.com");
-            customer.setPhone("9876543210");
+            // Payload 1 Customer to ShippingAddress
+            Customer customer1 = new Customer();
+            customer1.setFirstname("Tom");
+            customer1.setLastname("Hendry");
+            customer1.setEmail("test@gmail.com");
+            customer1.setPhone("9876543210");
 
-            ShippingAddress shippingAddress = new ShippingAddress();
-            shippingAddress.setProvince("Renolds Colony");
-            shippingAddress.setCity("Mumbai");
-            shippingAddress.setStreet("Wadala");
-            shippingAddress.setZip("400037");
-            shippingAddress.setCountry("India");
+            ShippingAddress shippingAddress1 = new ShippingAddress();
+            shippingAddress1.setProvince("Washington Province");
+            shippingAddress1.setCity("Washington");
+            shippingAddress1.setStreet("Washington Street");
+            shippingAddress1.setZip("115475");
+            shippingAddress1.setCountry("US");
 
-            customer.setShippingAddress(shippingAddress);
-            shippingAddress.setCustomer(customer);
+            customer1.setShippingAddress(shippingAddress1);
+            shippingAddress1.setCustomer(customer1);
 
-            Customer savedCustomer = customerService.insertCustomer(customer);
-            log.info(String.valueOf(savedCustomer));
+            Customer savedCustomer = customerService.insertCustomer(customer1);
+            log.info("Customer Saved : " + savedCustomer);
+
+            // Payload 2 ShippingAddress to Customer
+            Customer customer2 = new Customer();
+            customer2.setFirstname("Jerry");
+            customer2.setLastname("Barter");
+            customer2.setEmail("test@gmail.com");
+            customer2.setPhone("9876543210");
+
+            ShippingAddress shippingAddress2 = new ShippingAddress();
+            shippingAddress2.setProvince("LA Province");
+            shippingAddress2.setCity("LA");
+            shippingAddress2.setStreet("LA Street");
+            shippingAddress2.setZip("1154873");
+            shippingAddress2.setCountry("US");
+
+            customer2.setShippingAddress(shippingAddress2);
+            shippingAddress2.setCustomer(customer2);
+
+            ShippingAddress savedShippingAddress = shippingAddressService.insertShippingAddress(shippingAddress2);
+            log.info("Shipping Address Saved : " + savedShippingAddress);
         };
     }
 }

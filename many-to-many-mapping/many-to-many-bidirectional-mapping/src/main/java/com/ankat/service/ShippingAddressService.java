@@ -21,7 +21,7 @@ public class ShippingAddressService {
     }
 
     @Transactional
-    public List<ShippingAddress> insertShippingAddresses(Set<ShippingAddress> shippingAddresses){
+    public List<ShippingAddress> insertShippingAddresses(Set<ShippingAddress> shippingAddresses) {
         return shippingAddressRepository.saveAll(shippingAddresses);
     }
 }

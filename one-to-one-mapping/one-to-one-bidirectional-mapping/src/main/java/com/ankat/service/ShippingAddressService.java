@@ -14,6 +14,6 @@ public class ShippingAddressService {
 
     @Transactional
     public ShippingAddress insertShippingAddress(final ShippingAddress shippingAddress) {
-        return shippingAddressRepository.save(shippingAddress);
+        return shippingAddressRepository.saveAndFlush(shippingAddress);
     }
 }

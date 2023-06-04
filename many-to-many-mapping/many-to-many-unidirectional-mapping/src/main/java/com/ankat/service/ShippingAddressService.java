@@ -6,9 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Set;
-
 @RequiredArgsConstructor
 @Service(value = "shippingAddressService")
 public class ShippingAddressService {
@@ -18,10 +15,5 @@ public class ShippingAddressService {
     @Transactional
     public ShippingAddress insertShippingAddress(ShippingAddress shippingAddress) {
         return shippingAddressRepository.save(shippingAddress);
-    }
-
-    @Transactional
-    public List<ShippingAddress> insertShippingAddresses(Set<ShippingAddress> shippingAddresses){
-        return shippingAddressRepository.saveAll(shippingAddresses);
     }
 }

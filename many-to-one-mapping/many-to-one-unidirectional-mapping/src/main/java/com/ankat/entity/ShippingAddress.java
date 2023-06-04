@@ -32,8 +32,4 @@ public class ShippingAddress implements Serializable {
 
     @Column(name = "country")
     private String country;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
 }
